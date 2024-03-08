@@ -1,16 +1,80 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.example</groupId>
+  <artifactId>logincloud</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
 
-    <groupId>eurekaserver</groupId>
-    <artifactId>logincloud</artifactId>
-    <version>1.0-SNAPSHOT</version>
+  <modules>
+    <module>eureka-server</module>
+    <module>configserver</module>
+    <module>api-gateway</module>
+    <module>user-authentication-service</module>
+    <module>user-service</module>
+    <module>webservice</module>
+    <!-- 其他模块如配置服务器、API网关等将在此处添加 -->
+  </modules>
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <!-- 版本号 -->
+    <version>2.7.9</version>
+    <relativePath/> <!-- lookup parent from repository -->
+  </parent>
+  <properties>
+    <java.version>1.8</java.version>
+    <spring-boot.version>2.6.5</spring-boot.version>
+    <spring-cloud.version>2021.0.1</spring-cloud.version>
+  </properties>
 
-    <properties>
-        <maven.compiler.source>8</maven.compiler.source>
-        <maven.compiler.target>8</maven.compiler.target>
-    </properties>
-    
+  <repositories>
+    <repository>
+      <id>central</id>
+      <url>https://repo.maven.apache.org/maven2</url>
+    </repository>
+    <!-- 添加新仓库 -->
+<!--    <repository>-->
+<!--      <id>aliyun-repo</id>-->
+<!--      <url>https://maven.aliyun.com/repository/public</url>-->
+<!--      <releases>-->
+<!--        <enabled>true</enabled>-->
+<!--      </releases>-->
+<!--      <snapshots>-->
+<!--        <enabled>true</enabled>-->
+<!--      </snapshots>-->
+<!--    </repository>-->
+  </repositories>
+
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-dependencies</artifactId>
+        <version>3.2.0</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-dependencies</artifactId>
+        <version>Hoxton.SR8</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-maven-plugin</artifactId>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
 </project>

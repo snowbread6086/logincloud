@@ -1,2 +1,19 @@
-package com.example.userservice.entity;public class User {
+package com.example.userservice.entity;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
+public class User {
+
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
+  private String username;
+  private String password; // 实际应用中应使用加密存储
+  private String role;
+
+  // Getters and Setters
 }
